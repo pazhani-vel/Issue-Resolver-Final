@@ -1,0 +1,114 @@
+/* ===============================
+   PAGE BASE
+================================ */
+.page-container {
+  min-height: 100vh;
+  background: #b8e1ea;
+  padding-bottom: 40px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===============================
+   MOVING BLOCK LINE
+================================ */
+.top-moving-line {
+  position: relative;
+  height: 6px;
+  width: 100%;
+  background: #cad4e2;
+  overflow: hidden;
+}
+
+.top-moving-line span {
+  position: absolute;
+  height: 100%;
+  width: 120px;
+  background: linear-gradient(90deg, #2563eb, #38bdf8);
+  animation: moveBlock 3s linear infinite;
+  border-radius: 4px;
+}
+
+@keyframes moveBlock {
+  from {
+    left: -120px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/* ===============================
+   TITLE
+================================ */
+.dashboard-title {
+  text-align: center;
+  margin: 40px 0 30px;
+  font-size:40px;
+  font-weight: 800;
+  color: #1e3a8a;
+}
+
+/* ===============================
+   CARD CONTAINER
+================================ */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+/* ===============================
+   DASHBOARD CARDS
+================================ */
+.dashboard-card {
+  width: 300px;
+  padding: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card h3 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.dashboard-card p {
+  font-size: 24px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* Card colors */
+.dashboard-card.report {
+  border-top: 8px solid #22c55e;
+}
+
+.dashboard-card.view {
+  border-top: 8px solid #3b82f6;
+}
+
+/* Hover animation */
+.dashboard-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 40px;
+  }
+
+  .dashboard-card {
+    width: 100%;
+    max-width: 500px;
+  }
+}

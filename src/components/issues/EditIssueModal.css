@@ -1,0 +1,151 @@
+/* Overlay to dim background */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal card */
+.modal-content {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+/* Close button */
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #1e3a8a;
+}
+
+/* Modal heading */
+.modal-content h1 {
+  text-align: center;
+  margin: 0;
+  color: #1e3a8a;
+  font-weight: 650;
+}
+
+/* Inputs, textarea, and select */
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  font-size:16px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 25px;
+  transition: all 0.25s ease;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus {
+  outline: none;
+   font-size: 16px;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Textarea */
+.modal-content textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Buttons container */
+.modal-content div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Save button */
+.btn-save {
+  flex: 1;
+  background: #3b82f6; /* Blue Save button */
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 0;
+  border: none;
+  font-size:20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+  background: #2563eb;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Cancel button */
+.btn-cancel {
+  flex: 1;
+  background: #f3f4f6;
+  color: #1e3a8a;
+  font-weight: 600;
+  padding: 12px 0;
+  font-size:20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background: #e2e8f0;
+}
+
+/* Status colors */
+select[name="status"] option[value="Pending"] {
+  color: red;
+  font-weight: 600;
+}
+
+select[name="status"] option[value="In Progress"] {
+  color: orange;
+  font-weight: 600;
+}
+
+select[name="status"] option[value="Resolved"] {
+  color: green;
+  font-weight: 600;
+}
+
+/* Entry animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .modal-content {
+    padding: 20px 15px;
+  }
+}

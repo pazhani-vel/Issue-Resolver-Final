@@ -6,7 +6,6 @@ const MyIssuesPage = () => {
   return (
     <div className="page-container">
       <NavBar/>
-      <h2>My Reported Issues</h2>
       <MyIssues />
     </div>
   );

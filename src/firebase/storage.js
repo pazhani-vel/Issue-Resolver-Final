@@ -1,21 +1,17 @@
+// storage.js
+import { storage } from "./firebaseConfig"; // must point to your initialized firebase.js
+
+//// storage.js
 export const uploadImage = async (file) => {
   if (!file) return null;
 
   try {
-    // just simulate uploading, or upload to your backend/local folder
-    // e.g., send to your Node server, but ignore the URL
-    const formData = new FormData();
-    formData.append("file", file);
-
-    await fetch("http://localhost:5000/upload", {
-      method: "POST",
-      body: formData,
-    });
-
-    // Always return null for Firestore
-    return null;
+    // Just return a string like a "fake URL"
+    const fakeUrl = `issue-images/${Date.now()}-${file.name}`;
+    console.log("Stored file name as URL:", fakeUrl);
+    return fakeUrl;
   } catch (err) {
-    console.error("Image upload error:", err);
-    return null; // Never break your app
+    console.error("Image fake upload failed:", err);
+    return null;
   }
 };

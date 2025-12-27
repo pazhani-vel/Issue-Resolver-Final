@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { updateIssue } from "../../firebase/firestore";
+import "./EditIssueModal.css";
 
 const EditIssueModal = ({ issue, onClose, onUpdated }) => {
   const [form, setForm] = useState({
@@ -15,7 +16,6 @@ const EditIssueModal = ({ issue, onClose, onUpdated }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       await updateIssue(issue.id, form);
       onUpdated(issue.id, form);
@@ -27,9 +27,10 @@ const EditIssueModal = ({ issue, onClose, onUpdated }) => {
   };
 
   return (
-    <div style={overlay}>
-      <form style={modal} onSubmit={handleSubmit}>
-        <h3>Edit Issue</h3>
+    <div className="modal-overlay">
+      <form className="modal-content" onSubmit={handleSubmit}>
+        <span className="modal-close-btn" onClick={onClose}>✖</span>
+        <h1>Edit Issue</h1>
 
         <input
           name="category"
@@ -55,41 +56,19 @@ const EditIssueModal = ({ issue, onClose, onUpdated }) => {
           required
         />
 
-        <select
-          name="status"
-          value={form.status}
-          onChange={handleChange}
-        >
+        <select name="status" value={form.status} onChange={handleChange}>
           <option>Pending</option>
           <option>In Progress</option>
           <option>Resolved</option>
         </select>
 
         <div style={{ marginTop: "10px" }}>
-          <button type="submit">Save</button>
-          <button type="button" onClick={onClose}>
-            Cancel
-          </button>
+          <button type="submit" className="btn-save">Save</button>
+          <button type="button" className="btn-cancel" onClick={onClose}>Cancel</button>
         </div>
       </form>
     </div>
   );
-};
-
-const overlay = {
-  position: "fixed",
-  inset: 0,
-  background: "rgba(0,0,0,0.5)",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-};
-
-const modal = {
-  background: "#fff",
-  padding: "20px",
-  borderRadius: "8px",
-  width: "400px",
 };
 
 export default EditIssueModal;

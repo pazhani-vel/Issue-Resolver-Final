@@ -1,14 +1,36 @@
 import React from "react";
+import "./issuereport.css";
 
 const IssueDetailsForm = ({ issueData, setIssueData }) => {
-  const handleChange = e => setIssueData({ ...issueData, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setIssueData({ ...issueData, [e.target.name]: e.target.value });
 
   return (
-    <div>
+    <div className="form-block">
       <h3>Issue Details</h3>
-      <textarea name="description" placeholder="Detailed Description" value={issueData.description || ""} onChange={handleChange} required />
-      <textarea name="shortDescription" placeholder="Short Description" value={issueData.shortDescription || ""} onChange={handleChange} rows={2} required />
-      <select name="category" value={issueData.category || ""} onChange={handleChange} required>
+
+      <textarea
+        name="description"
+        placeholder="Detailed Description"
+        value={issueData.description || ""}
+        onChange={handleChange}
+        required
+      />
+
+      <textarea
+        name="shortDescription"
+        placeholder="Short Description"
+        value={issueData.shortDescription || ""}
+        onChange={handleChange}
+        rows={2}
+      />
+
+      <select
+        name="category"
+        value={issueData.category || ""}
+        onChange={handleChange}
+        required
+      >
         <option value="">Select Category</option>
         <option value="Electrical">Electrical</option>
         <option value="Water">Water</option>

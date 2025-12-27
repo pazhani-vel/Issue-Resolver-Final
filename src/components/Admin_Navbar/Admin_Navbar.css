@@ -1,24 +1,35 @@
+/* ------------------- Navbar Container ------------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #667eea;
+  padding: 12px 20px;
+  background-color: #ffffff; /* Indigo */
   color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+/* ------------------- Logo ------------------- */
 .navbar-logo a {
   color: white;
+  font-size: 20px;
+  font-weight: 700;
   text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: bold;
 }
 
+.navbar-logo a:hover {
+  color: #d1d5db; /* light hover */
+}
+
+/* ------------------- Links ------------------- */
 .navbar-links {
-  list-style: none;
   display: flex;
+  align-items: center;
   gap: 15px;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -26,25 +37,51 @@
 .navbar-links li a {
   color: white;
   text-decoration: none;
+  font-size: 14px;
   font-weight: 500;
-  transition: 0.3s;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.2s;
 }
 
 .navbar-links li a:hover {
-  color: #ffdd57;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* ------------------- Logout Button ------------------- */
 .logout-btn {
-  background-color: #ff4d4f;
-  border: none;
-  padding: 5px 10px;
+  background-color: #ef4444; /* Red */
   color: white;
-  font-weight: bold;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  border-radius: 4px;
-  transition: 0.3s;
+  transition: background 0.2s;
 }
 
 .logout-btn:hover {
-  background-color: #ff7875;
+  background-color: #dc2626; /* Darker red */
+}
+
+/* ------------------- Responsive ------------------- */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .navbar-links li a,
+  .logout-btn {
+    width: 100%;
+    text-align: center;
+  }
 }

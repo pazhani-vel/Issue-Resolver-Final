@@ -60,7 +60,12 @@ const AdminDashboard = () => {
         {loading ? (
           <div className="loading">Loading issues...</div>
         ) : (
-          <KanbanBoard tasks={issues} setTasks={setIssues} onStatusChange={handleStatusChange} />
+          <KanbanBoard
+  tasks={issues}
+  setTasks={setIssues}
+  isAdmin={true}   // 🔥 THIS LINE IS CRITICAL
+/>
+
         )}
       </main>
     </div>

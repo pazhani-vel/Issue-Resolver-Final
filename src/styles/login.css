@@ -1,31 +1,144 @@
-/* Full-width inputs */
-input[type="text"],
-input[type="password"] {
+/* ===============================
+   FULL PAGE LOGIN
+================================ */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f1f5f6, #b8e1ea);
+}
+
+/* ===============================
+   CENTERED LOGIN CARD
+================================ */
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 16px;
+  max-width: 400px;
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: fadeInUp 0.5s ease forwards;
 }
 
-/* Set a style for all buttons */
-button {
-  background-color: #635f9a;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
+/* ENTRY ANIMATION */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===============================
+   HEADING
+================================ */
+.container h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #1e3a8a;
+  font-weight: 700;
+}
+
+/* ===============================
+   INPUT FIELDS
+================================ */
+.container input {
   width: 100%;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 15px;
+  transition: all 0.25s ease;
 }
 
-/* Add a hover effect for buttons */
-button:hover {
-  opacity: 0.8;
+.container input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
 
+/* ===============================
+   ERROR MESSAGE
+================================ */
 .error {
-  color: red;
-  font-size: 0.75em;
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* ===============================
+   BUTTON
+================================ */
+#login-button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #34d399, #10b981);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.4);
+}
+
+/* ===============================
+   LINKS & ALT TEXT
+================================ */
+.container p {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.container a {
+  display: block;
+  margin-top: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #3b82f6;
+  transition: color 0.2s ease;
+}
+
+.container a:hover {
+  color: #1e40af;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 480px) {
+  .container {
+    padding: 40px 20px;
+  }
+
+  .container h2 {
+    font-size: 24px;
+  }
+
+  .container input {
+    padding: 14px 16px;
+  }
+
+  #login-button {
+    padding: 14px;
+    font-size: 15px;
+  }
 }

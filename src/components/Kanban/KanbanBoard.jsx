@@ -1,47 +1,40 @@
 import React from "react";
-import TaskCard from "./TaskCard.jsx";
-import { updateIssue } from "../../utils/firebase.js";
+import TaskCard from "./TaskCard";
+import { updateIssue } from "../../utils/firebase";
 import "./Kanban.css";
 
-const KanbanBoard = ({ tasks, setTasks }) => {
-const columns = ["Pending", "In Progress", "Completed"];
+const KanbanBoard = ({ tasks, setTasks, isAdmin }) => {
+  const columns = ["Pending", "In Progress", "Completed"];
 
-
-  // DRAG START
+  // DRAG START (ADMIN ONLY)
   const handleDragStart = (e, taskId) => {
+    if (!isAdmin) return;
     e.dataTransfer.setData("text/plain", taskId);
     e.dataTransfer.effectAllowed = "move";
-    console.log("DRAG START:", taskId);
   };
 
-  // MUST allow drop
+  // ALLOW DROP ONLY FOR ADMIN
   const handleDragOver = (e) => {
-    e.preventDefault();
+    if (isAdmin) e.preventDefault();
   };
 
-  // DROP HANDLER
+  // DROP HANDLER (ADMIN ONLY)
   const handleDrop = async (e, newStatus) => {
+    if (!isAdmin) return;
     e.preventDefault();
 
     const taskId = e.dataTransfer.getData("text/plain");
-    console.log("DROP:", taskId, newStatus);
-
     if (!taskId) return;
 
-    // 🔥 Update UI
+    // Update UI
     setTasks((prev) =>
       prev.map((task) =>
         task.id === taskId ? { ...task, status: newStatus } : task
       )
     );
 
-    // 🔥 Update Firebase
-    try {
-      await updateIssue(taskId, { status: newStatus });
-      console.log("Firebase updated");
-    } catch (err) {
-      console.error("Firebase update failed", err);
-    }
+    // Update Firebase
+    await updateIssue(taskId, { status: newStatus });
   };
 
   const getTasksByStatus = (status) =>
@@ -49,15 +42,13 @@ const columns = ["Pending", "In Progress", "Completed"];
 
   return (
     <div className="kanban-board">
-
       {columns.map((col) => (
         <div
           key={col}
-          className="kanban-column"
+          className={`kanban-column ${!isAdmin ? "readonly" : ""}`}
           onDragOver={handleDragOver}
           onDrop={(e) => handleDrop(e, col)}
         >
-          
           <h3>{col}</h3>
 
           {getTasksByStatus(col).map((task) => (
@@ -65,6 +56,7 @@ const columns = ["Pending", "In Progress", "Completed"];
               key={task.id}
               task={task}
               onDragStart={handleDragStart}
+              isAdmin={isAdmin}
             />
           ))}
         </div>

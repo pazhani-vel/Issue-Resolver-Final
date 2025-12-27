@@ -29,7 +29,7 @@ const NavBar = () => {
             <Link to="/reportissuepage">Report Issue</Link>
           </li>
           <li>
-            <Link to="/allissues">All Issue</Link>
+            <Link to="/allissues">All Issues</Link>
           </li>
           <li>
             <button onClick={handleLogout} className="logout-btn">

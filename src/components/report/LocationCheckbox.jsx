@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import './issuereport.css';
 export const getCurrentLocation = () =>
   new Promise((resolve, reject) => {
     if (!navigator.geolocation) return reject("Geolocation not supported");
@@ -8,11 +8,10 @@ export const getCurrentLocation = () =>
       err => reject(err.message)
     );
   });
-
 const LocationCheckbox = ({ setLocation }) => {
   const [checked, setChecked] = useState(false);
 
-  const handleChange = async e => {
+  const handleChange = async (e) => {
     const isChecked = e.target.checked;
     setChecked(isChecked);
 
@@ -30,9 +29,14 @@ const LocationCheckbox = ({ setLocation }) => {
   };
 
   return (
-    <div>
-      <input type="checkbox" checked={checked} onChange={handleChange} />
-      <label>Detect my location</label>
+    <div className="checkbox-wrapper">
+      <input
+        type="checkbox"
+        id="detectLocation"
+        checked={checked}
+        onChange={handleChange}
+      />
+      <label htmlFor="detectLocation">Detect my location</label>
     </div>
   );
 };

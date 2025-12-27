@@ -4,7 +4,6 @@ import MyIssues from "../issues/MyIssues";
 
 const UserDashboard = () => {
   const [view, setView] = useState("report"); // default view
-
   return (
     <div>
       <div style={{ marginBottom: "20px" }}>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import KanbanBoard from "../../../components/Kanban/KanbanBoard";
 import { fetchIssuesByCategory,updateIssue } from "../../../utils/firebase";
 import NavBar from "../../../components/Navbar/Navbar";
-
+import './All_Issue.css';
 const categories = [
   { name: "All", icon: "📋" },
   { name: "Electrical", icon: "💡" },
