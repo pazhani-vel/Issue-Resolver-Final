@@ -67,7 +67,6 @@ const ReportIssueForm = () => {
 
       const finalIssueData = {
         ...issueData,
-        shortDescription: await generateSummary(),
         reportedBy: userData.Email.toLowerCase(),
         location,
         imageUrl: image, // store base64 string
