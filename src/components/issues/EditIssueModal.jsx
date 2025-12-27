@@ -56,12 +56,6 @@ const EditIssueModal = ({ issue, onClose, onUpdated }) => {
           required
         />
 
-        <select name="status" value={form.status} onChange={handleChange}>
-          <option>Pending</option>
-          <option>In Progress</option>
-          <option>Resolved</option>
-        </select>
-
         <div style={{ marginTop: "10px" }}>
           <button type="submit" className="btn-save">Save</button>
           <button type="button" className="btn-cancel" onClick={onClose}>Cancel</button>

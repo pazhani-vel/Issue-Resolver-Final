@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import KanbanBoard from "../../../components/Kanban/KanbanBoard";
-import { fetchIssuesByCategory,updateIssue } from "../../../utils/firebase";
+import IssueGrid from "../../../components/IssueGrid/IssueGrid";
+import { fetchIssuesByCategory, updateIssue } from "../../../utils/firebase";
 import NavBar from "../../../components/Navbar/Navbar";
-import './All_Issue.css';
+import "./All_Issue.css";
+
 const categories = [
   { name: "All", icon: "📋" },
   { name: "Electrical", icon: "💡" },
@@ -32,23 +33,27 @@ const AllIssues = () => {
 
   const handleStatusChange = async (id, newStatus) => {
     await updateIssue(id, { status: newStatus });
-    setIssues(prev => prev.map(issue => issue.id === id ? { ...issue, status: newStatus } : issue));
+    setIssues((prev) =>
+      prev.map((i) => (i.id === id ? { ...i, status: newStatus } : i))
+    );
   };
 
   return (
     <div className="admin-app">
-      <NavBar/>
+      <NavBar />
+
       <header className="dashboard-header">
         <h1>Admin Dashboard</h1>
         <div className="task-count">Total Issues: {issues.length}</div>
       </header>
 
       <div className="category-filter">
-        {categories
-        .map(cat => (
+        {categories.map((cat) => (
           <button
             key={cat.name}
-            className={`category-btn ${selectedCategory === cat.name ? "active" : ""}`}
+            className={`category-btn ${
+              selectedCategory === cat.name ? "active" : ""
+            }`}
             onClick={() => setSelectedCategory(cat.name)}
           >
             <span className="icon">{cat.icon}</span> {cat.name}
@@ -60,7 +65,11 @@ const AllIssues = () => {
         {loading ? (
           <div className="loading">Loading issues...</div>
         ) : (
-          <KanbanBoard tasks={issues} setTasks={setIssues} onStatusChange={handleStatusChange} />
+          <IssueGrid
+            issues={issues}
+            onStatusChange={handleStatusChange}
+            isAdmin={true}
+          />
         )}
       </main>
     </div>

@@ -1,0 +1,13 @@
+.issue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.no-issues {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: gray;
+  font-size: 16px;
+}

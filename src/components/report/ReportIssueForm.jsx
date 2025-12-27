@@ -24,6 +24,28 @@ const ReportIssueForm = () => {
     reader.readAsDataURL(file);
   };
 
+  const generateSummary = async () => {
+  const res = await fetch("/api/generateSummary", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      description: issueData.description,
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error("AI API failed");
+  }
+
+  const data = await res.json();
+  return data.summary;
+};
+
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -39,11 +61,13 @@ const ReportIssueForm = () => {
     setLoading(true);
 
     try {
+
       // Save/update user
       await saveUser(userData.Email, userData);
 
       const finalIssueData = {
         ...issueData,
+        shortDescription: await generateSummary(),
         reportedBy: userData.Email.toLowerCase(),
         location,
         imageUrl: image, // store base64 string
