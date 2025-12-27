@@ -1,0 +1,133 @@
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.kanban-column {
+  background: white;
+  border-radius: 12px;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.column-header {
+  background: #667eea;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.column-tasks {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.task-card {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.task-card .task-title {
+  font-weight: 700;
+}
+
+.task-card .task-location {
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.image-btn {
+  margin-top: 0.5rem;
+  cursor: pointer;
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+}
+
+.image-popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-popup img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+/* Task Card */
+.task-card {
+  position: relative; /* required for hover image */
+  padding: 10px;
+  margin: 10px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  cursor: grab;
+  width: 250px; /* adjust as needed */
+}
+
+/* Location Map */
+.task-location img {
+  width: 100%;
+  height: 150px;
+  border-radius: 6px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Hover Image Container */
+.task-image-container {
+  display: none; /* hidden by default */
+  position: absolute;
+  top: 0;
+  left: 260px; /* show next to card, adjust if needed */
+  width: 200px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  background: #fff;
+  z-index: 10;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Show image on hover */
+.task-card:hover .task-image-container {
+  display: block;
+}
+
+/* Image inside container */
+.task-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.kanban-column {
+  min-height: 300px;
+  padding: 10px;
+  border: 2px dashed #444;
+}
+
+.task-card {
+  cursor: grab;
+}
+
+.task-card:active {
+  cursor: grabbing;
+}
+

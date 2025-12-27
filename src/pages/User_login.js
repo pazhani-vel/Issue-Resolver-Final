@@ -70,7 +70,7 @@ class Login extends React.Component {
     }
 
     if (this.props.authState === authStates.LOGGED_IN) {
-      return <Redirect to="/"></Redirect>;
+      return <Redirect to="/userDashboard"></Redirect>;
     }
 
     const errorMsg = this.state.error;
@@ -78,7 +78,8 @@ class Login extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="container">
-          <h2>{en.GREETINGS.LOGIN}</h2>
+          
+          <h2>User {en.GREETINGS.LOGIN}</h2>
 
           <input
             type="text"
@@ -101,7 +102,8 @@ class Login extends React.Component {
           </button>
 
           <p>{en.FORM_FIELDS.LOGIN_ALT_TEXT}</p>
-          <Link to="/signup">Sign up</Link>
+          <Link to="/signup">Sign up</Link><br></br>
+          <Link to="/admin_login">Admin</Link>
         </div>
       </form>
     );
