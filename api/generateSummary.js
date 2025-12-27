@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     }
 
     // ✅ API key from Vercel environment variable
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const genAI = new GoogleGenerativeAI("AIzaSyBSsxbLC0Y1mQBThXToPQ53taPvxWUumtk");
 
     const model = genAI.getGenerativeModel({
       model: "gemini-1.5-flash",
