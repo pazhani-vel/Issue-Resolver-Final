@@ -43,7 +43,7 @@ const AllIssues = () => {
       <NavBar />
 
       <header className="dashboard-header">
-        <h1>Admin Dashboard</h1>
+        <h1>User Dashboard</h1>
         <div className="task-count">Total Issues: {issues.length}</div>
       </header>
 
