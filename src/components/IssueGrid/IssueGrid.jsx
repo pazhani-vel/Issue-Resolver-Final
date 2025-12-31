@@ -2,10 +2,15 @@ import React from "react";
 import TaskCard from "./Taskcard"; // reuse your existing card
 import "./IssueGrid.css";
 
+
 const IssueGrid = ({ issues, onStatusChange, isAdmin }) => {
+  
   return (
     <div className="issue-grid">
-      {issues.map((issue) => (
+      {issues
+      .slice() // avoid mutating original array
+  .sort((a, b) => b.votes - a.votes)
+  .map((issue) => (
         <TaskCard
           key={issue.id}
           task={issue}

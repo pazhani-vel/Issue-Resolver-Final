@@ -25,6 +25,8 @@ const TaskCard = ({ task, onDragStart, isAdmin }) => {
       <p><b>Reported by:</b> {task.reportedBy}</p>
       <p><b>Created:</b> {new Date(task.createdAt).toLocaleString()}</p>
       <p><b>Description:</b> {task.description}</p>
+            <p style={{textAlign:"right",marginRight:"10px"}}><b style={{color:"red"}}>Votes:</b>{task.votes}</p>
+
 
       {/* Buttons */}
       <div className="task-buttons">

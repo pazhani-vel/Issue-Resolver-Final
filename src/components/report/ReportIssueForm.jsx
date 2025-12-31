@@ -72,6 +72,7 @@ const ReportIssueForm = () => {
         imageUrl: image, // store base64 string
         status: "Pending",
         createdAt: new Date().toISOString(),
+        votes:0
       };
 
       await addIssue(finalIssueData);

@@ -51,7 +51,10 @@ const KanbanBoard = ({ tasks, setTasks, isAdmin }) => {
         >
           <h3>{col}</h3>
 
-          {getTasksByStatus(col).map((task) => (
+          {getTasksByStatus(col)
+          .slice() // avoid mutating original array
+  .sort((a, b) => b.votes - a.votes)
+  .map((task) => (
             <TaskCard
               key={task.id}
               task={task}
